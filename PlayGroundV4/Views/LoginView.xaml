@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="PlayGroundV4.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlayGroundV4.Views"
+             mc:Ignorable="d" 
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+             
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <materialDesign:Card Grid.Column="1" Grid.Row="1" Margin="10" Padding="16">
+            <Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Username:</Label>
+                    <TextBox Text="{Binding UserName}" Width="100"></TextBox>
+                    <Label>Password:</Label>
+                    <TextBox Text="{Binding Password}" Width="100"></TextBox>
+                    <Label>ID:</Label>
+                    <TextBox Text="{Binding ID}" Width="100"></TextBox>
+                    <Button x:Name="Save" Content="Save" Width="100"></Button>
+                    <Button x:Name="CheckLogin" Content="Login" Width="100"/>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>
