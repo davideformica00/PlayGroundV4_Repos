@@ -29,6 +29,19 @@
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
 
-        
+        <materialDesign:Card Grid.Column="1" Grid.Row="1" Margin="10" Padding="16">
+            <Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Username:</Label>
+                    <TextBox Text="{Binding UserName}" Width="100"></TextBox>
+                    <Label>Password:</Label>
+                    <TextBox Text="{Binding Password}" Width="100"></TextBox>
+                    <Label>ID:</Label>
+                    <TextBox Text="{Binding ID}" Width="100"></TextBox>
+                    <Button x:Name="Save" Content="Save" Width="100"></Button>
+                    <Button x:Name="CheckLogin" Content="Login" Width="100"/>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </Window>
