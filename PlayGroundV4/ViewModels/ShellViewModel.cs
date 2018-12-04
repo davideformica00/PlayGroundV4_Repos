@@ -22,7 +22,7 @@ namespace PlayGroundV4.ViewModels
             ActiveItem = new LoginViewModel();
         }
 
-        public static void ChangeView(Screen screen)
+        public static void ChangeView(Screen screen)   
         {
             _instance.ActiveItem = screen;
         }

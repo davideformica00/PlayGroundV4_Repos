@@ -9,6 +9,14 @@ namespace PlayGroundV4.Models
 {
     public class User : PropertyChangedBase
     {
+        private static readonly string _xmlPath = "userlist.xml";
+        private static List<User> UserList = Serializer.deserialize(_xmlPath);
+
+        public static User adduser(User user)
+        {
+
+        }
+
         #region      
         private string _username;
         public string UserName
@@ -49,7 +57,37 @@ namespace PlayGroundV4.Models
         }
         #endregion
 
+        #region nationality
 
+        private string _nationality;
+
+        public string nationality
+        {
+            get { return _nationality;  }
+            set
+            {
+                _nationality = value;
+                NotifyOfPropertyChange(() => nationality);
+            }
+        }
+
+        #endregion
+
+        #region age
+
+        private string _age;
+
+        public string age
+        {
+            get { return _age;  }
+            set
+            {
+                _age = value;
+                NotifyOfPropertyChange(() => age);
+            }
+        }
+
+        #endregion
     }
 }
 

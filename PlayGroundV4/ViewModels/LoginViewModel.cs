@@ -60,11 +60,6 @@ namespace PlayGroundV4.ViewModels
             //Converting the object into the right form, so information can be written into the file
             XDocument doc = File.Exists(_filename) ? XDocument.Load(_filename) : new XDocument();
 
-            User user = new User();
-            user.UserName = UserName;
-            user.Password = Password;
-            user.ID = ID;
-
             //using XmlWriter for writing into the file
             using (XmlWriter xWriter = XmlWriter.Create(_filename, new XmlWriterSettings()
             {
@@ -109,7 +104,7 @@ namespace PlayGroundV4.ViewModels
 
                 if (validateLogin(user))
                 {
-                    ShellViewModel.ChangeView(new ProfileViewModel());
+                    ShellViewModel.ChangeView(new ProfileViewModel(user));
                     //Login View
                 }
             }
