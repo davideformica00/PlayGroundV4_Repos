@@ -17,14 +17,30 @@
              
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel HorizontalAlignment="Left">
-            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" Text="{Binding User.UserName}"></TextBlock>
-            <Label FontSize="20">Age:</Label>
-            <TextBox x:Name="age" Height="34" ></TextBox>
-            <Label FontSize="20">Nationality:</Label>
-            <TextBox x:Name="nationality" Height="34" ></TextBox>
-            <Button x:Name="BackBtn" Width="90">Back</Button>
-            <Button x:Name="saveBtn2" Width="90">Save edit</Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" HorizontalAlignment="Left">
+                <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" Text="{Binding User.UserName}"></TextBlock>
+                <Label FontSize="20">Age:</Label>
+                <TextBox Text="{Binding Age}" Height="34" ></TextBox>
+                <Label FontSize="20">Nationality:</Label>
+                <TextBox Text="{Binding Nationality}" Height="34" ></TextBox>
+                <Button x:Name="BackBtn" Width="90">Back</Button>
+                <Button x:Name="saveBtn2" Width="90">Save edit</Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+            <ListView Name="UserListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="Name: "></TextBlock>
+                            <TextBlock Text="{Binding User.Username}"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
     </Grid>
 </UserControl>

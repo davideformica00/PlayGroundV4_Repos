@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -18,13 +19,13 @@ namespace PlayGroundV4.ViewModels
 
         private string _nationality;
 
-        public string nationality
+        public string Nationality
         {
             get { return _nationality; }
             set
             {
                 _nationality = value;
-                NotifyOfPropertyChange(() => nationality);
+                NotifyOfPropertyChange(() => Nationality);
             }
         }
 
@@ -34,13 +35,13 @@ namespace PlayGroundV4.ViewModels
 
         private string _age;
 
-        public string age
+        public string Age
         {
             get { return _age; }
             set
             {
                 _age = value;
-                NotifyOfPropertyChange(() => age);
+                NotifyOfPropertyChange(() => Age);
             }
         }
 
@@ -48,13 +49,13 @@ namespace PlayGroundV4.ViewModels
 
         private User _user;
 
-        public User User
+        public User ProfileUser
         {
             get { return _user; }
             set
             {
                 _user = value;
-                NotifyOfPropertyChange(() => User);
+                NotifyOfPropertyChange(() => ProfileUser);
             }
         }
 
@@ -66,7 +67,7 @@ namespace PlayGroundV4.ViewModels
 
         public ProfileViewModel(User user)
         {
-            this.User = user;
+            this.ProfileUser = user;
         }
 
         //XElement filedata = XElement.Load("test.xml");
@@ -79,22 +80,10 @@ namespace PlayGroundV4.ViewModels
         //Saving edited data to file 
         public void saveBtn2()
         {
-            //loading file 
-            XDocument doc = XDocument.Load("test.xml");
+            ProfileUser.Age = Age;
+            ProfileUser.Nationality = Nationality;
 
-            User.nationality = _nationality;
-            User.age = _age;
-
-            //making new elements "nationality" and "age"
-            XElement nationality = new XElement("Nationality", User.nationality);
-            XElement age = new XElement("Age", User.age);
-
-            //adding the new elements to xml 
-            doc.Root.Element("User").Add(nationality);
-            doc.Root.Element("User").Add(age);
-
-            //saving changes
-            doc.Save("test.xml");
+            Serializer.serialize(User.UserList);
         }
     }
 }

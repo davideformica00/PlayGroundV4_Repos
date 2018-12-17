@@ -13,7 +13,7 @@ namespace PlayGroundV4.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private readonly string _filename = "test.xml";
+        
         #region username
         private string _username;
         public string UserName
@@ -57,58 +57,30 @@ namespace PlayGroundV4.ViewModels
 
         public void Save()
         {
-            //Converting the object into the right form, so information can be written into the file
-            XDocument doc = File.Exists(_filename) ? XDocument.Load(_filename) : new XDocument();
-
-            //using XmlWriter for writing into the file
-            using (XmlWriter xWriter = XmlWriter.Create(_filename, new XmlWriterSettings()
+            User newUser = new User
             {
-                Indent = true,
-                NewLineOnAttributes = true
-            }))
-            {   //Writing to the file
-                xWriter.WriteStartDocument();
-                xWriter.WriteStartElement("root");
+                UserName = UserName,
+                Password = Password,
+                ID = ID
+            };
 
-                xWriter.WriteStartElement("User");
-
-                xWriter.WriteElementString("Username", UserName);
-                xWriter.WriteElementString("Password", Password);
-                xWriter.WriteElementString("Id", ID);
-
-                xWriter.WriteEndElement();
-
-                xWriter.WriteEndElement();
-                xWriter.WriteEndDocument();
-            }
+            User.adduser(newUser);
         }
 
         //function for "login"-button 
         public void CheckLogin()
         {
-            XDocument doc = XDocument.Load(_filename);
 
-            foreach (var xmlUser in doc.Root.Elements("User"))
+            foreach (User user in User.UserList)
             {
-                string usernameval = xmlUser.Element("Username").Value;
-                string passwordval = xmlUser.Element("Password").Value;
-                string IDval = xmlUser.Element("Id").Value;
-
-                //ID needs to be parsed so it is saved as a int
-                int intID = Int32.Parse(IDval);
-
-                User user = new User();
-                user.UserName = usernameval;
-                user.Password = passwordval;
-                user.ID = IDval;
-
                 if (validateLogin(user))
                 {
                     ShellViewModel.ChangeView(new ProfileViewModel(user));
+                    break;
                     //Login View
                 }
             }
-        }
+        } 
 
         private bool validateLogin(User user)
         {

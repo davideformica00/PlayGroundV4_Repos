@@ -9,13 +9,26 @@ namespace PlayGroundV4.Models
 {
     public class User : PropertyChangedBase
     {
-        private static readonly string _xmlPath = "userlist.xml";
-        private static List<User> UserList = Serializer.deserialize(_xmlPath);
-
-        public static User adduser(User user)
+        public static List<User> UserList;
+        public static void Init()
         {
-
+            UserList = Serializer.deserialize();
         }
+        public static bool adduser(User user)
+        {
+            if (String.IsNullOrWhiteSpace(user.UserName) ||
+                String.IsNullOrWhiteSpace(user.Password) ||
+                String.IsNullOrWhiteSpace(user.ID))
+                return false;
+            else
+            {
+                UserList.Add(user);
+                Serializer.serialize(UserList);
+                return true;
+            }                
+        }
+        
+        public User() { }
 
         #region      
         private string _username;
@@ -61,13 +74,13 @@ namespace PlayGroundV4.Models
 
         private string _nationality;
 
-        public string nationality
+        public string Nationality
         {
             get { return _nationality;  }
             set
             {
                 _nationality = value;
-                NotifyOfPropertyChange(() => nationality);
+                NotifyOfPropertyChange(() => Nationality);
             }
         }
 
@@ -77,17 +90,16 @@ namespace PlayGroundV4.Models
 
         private string _age;
 
-        public string age
+        public string Age
         {
             get { return _age;  }
             set
             {
                 _age = value;
-                NotifyOfPropertyChange(() => age);
+                NotifyOfPropertyChange(() => Age);
             }
         }
 
         #endregion
     }
 }
-

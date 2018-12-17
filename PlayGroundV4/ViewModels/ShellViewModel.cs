@@ -17,8 +17,9 @@ namespace PlayGroundV4.ViewModels
     {
         private static ShellViewModel _instance;
         public ShellViewModel()
-        {
+        {  
             _instance = this;
+            User.Init();
             ActiveItem = new LoginViewModel();
         }
 
