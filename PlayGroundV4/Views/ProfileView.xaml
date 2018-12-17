@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlayGroundV4.Views"
+             xmlns:model="clr-namespace:PlayGroundV4.Models"
              mc:Ignorable="d" 
              
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -31,12 +32,12 @@
                 <Button x:Name="saveBtn2" Width="90">Save edit</Button>
         </StackPanel>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left">
-            <ListView Name="UserListView">
+            <ListView ItemsSource="{Binding ListView}">
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate DataType="{x:Type model:User}">
                         <WrapPanel>
                             <TextBlock Text="Name: "></TextBlock>
-                            <TextBlock Text="{Binding User.Username}"></TextBlock>
+                            <TextBlock Text="{Binding UserName}"></TextBlock>
                         </WrapPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

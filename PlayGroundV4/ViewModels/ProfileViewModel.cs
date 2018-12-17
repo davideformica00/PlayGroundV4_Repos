@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
+
 using System.Xml;
 using System.Xml.Linq;
 
@@ -14,6 +14,16 @@ namespace PlayGroundV4.ViewModels
 {
     public class ProfileViewModel : BaseViewModel
     {
+
+
+        #region listview
+
+        public List<User> ListView
+        {
+            get { return User.UserList; }
+        }
+
+        #endregion
 
         #region nationality
 
