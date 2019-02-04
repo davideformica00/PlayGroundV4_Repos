@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -60,8 +61,7 @@ namespace PlayGroundV4.ViewModels
             User newUser = new User
             {
                 UserName = UserName,
-                Password = Password,
-                ID = ID
+                Password = Password
             };
 
             User.adduser(newUser);
@@ -70,7 +70,6 @@ namespace PlayGroundV4.ViewModels
         //function for "login"-button 
         public void CheckLogin()
         {
-
             foreach (User user in User.UserList)
             {
                 if (validateLogin(user))
@@ -82,11 +81,16 @@ namespace PlayGroundV4.ViewModels
             }
         } 
 
+        public void TextChanged(PasswordBox source)
+        {
+            this.Password = source.Password;
+            return;
+        }
+
         private bool validateLogin(User user)
         {
             if (user.UserName == UserName &&
-                user.Password == Password &&
-                user.ID == ID)
+                user.Password == Password)
                 return true;
             else
                 return false;

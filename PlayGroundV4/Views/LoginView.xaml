@@ -15,18 +15,30 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
              
-             d:DesignHeight="450" d:DesignWidth="800">
+        xmlns:cal="http://www.caliburnproject.org"
+             
+        d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
-        <materialDesign:Card Grid.Column="1" Grid.Row="1" Margin="10" Padding="16">
+        <materialDesign:Card Grid.Column="1" Margin="5" Grid.Row="1" Padding="16">
             <Grid>
-                <StackPanel Orientation="Horizontal">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
                     <Label>Username:</Label>
                     <TextBox Text="{Binding UserName}" Width="100"></TextBox>
                     <Label>Password:</Label>
-                    <TextBox Text="{Binding Password}" Width="100"></TextBox>
-                    <Label>ID:</Label>
-                    <TextBox Text="{Binding ID}" Width="100"></TextBox>
-                    <Button x:Name="Save" Content="Save" Width="100"></Button>
+                    <PasswordBox PasswordChar="*" Width="100" 
+                                 cal:Message.Attach="[Event PasswordChanged] = [Action TextChanged($source)]"></PasswordBox>
+                    <!--<TextBox x:Name="CreatePasswd" Text="{Binding Password}" Width="100" 
+                             cal:Message.Attach="[Event TextChanged] = [Action TextChanged($source)]"></TextBox>-->
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10">
+                    <Button x:Name="Save" Content="Register" Width="100" Margin= "10"/>
                     <Button x:Name="CheckLogin" Content="Login" Width="100"/>
                 </StackPanel>
             </Grid>

@@ -17,8 +17,7 @@ namespace PlayGroundV4.Models
         public static bool adduser(User user)
         {
             if (String.IsNullOrWhiteSpace(user.UserName) ||
-                String.IsNullOrWhiteSpace(user.Password) ||
-                String.IsNullOrWhiteSpace(user.ID))
+                String.IsNullOrWhiteSpace(user.Password))
                 return false;
             else
             {
@@ -56,20 +55,7 @@ namespace PlayGroundV4.Models
         }
 
         #endregion
-        #region myid
-        private string _id;
-
-        public string ID
-        {
-            get { return _id; }
-            set
-            {
-                _id = value;
-                NotifyOfPropertyChange(() => ID);
-            }
-        }
-        #endregion
-
+       
         #region nationality
 
         private string _nationality;
@@ -101,5 +87,52 @@ namespace PlayGroundV4.Models
         }
 
         #endregion
+
+        #region nachname
+
+        private string _nachname;
+
+        public string Nachname
+        {
+            get { return _nachname; }
+            set
+            {
+                _nachname = value;
+                NotifyOfPropertyChange(() => Nachname);
+            }
+        }
+
+        #endregion
+
+        #region email
+
+        private string _email;
+
+        public string Email
+        {
+            get { return _email; }
+            set
+            {
+                _email = value;
+                NotifyOfPropertyChange(() => Email);
+            }
+        }
+
+        #endregion
+
+        #region telefon
+
+        private string _telefon;
+
+        public string Telefon
+        {
+            get { return _telefon; }
+            set
+            {
+                _telefon = value;
+                NotifyOfPropertyChange(() => Telefon);
+            }
+        }
+        #endregion 
     }
 }

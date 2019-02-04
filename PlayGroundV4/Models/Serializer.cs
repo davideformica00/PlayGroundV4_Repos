@@ -31,7 +31,6 @@ namespace PlayGroundV4.Models
 
                     xWriter.WriteElementString("Username", user.UserName);
                     xWriter.WriteElementString("Password", user.Password);
-                    xWriter.WriteElementString("Id", user.ID);
                     xWriter.WriteElementString("Age", user.Age);
                     xWriter.WriteElementString("Nationality", user.Nationality);
 
@@ -94,12 +93,11 @@ namespace PlayGroundV4.Models
                     user.Password = passwordval;
                     user.Nationality = nationalityval;
                     user.Age = ageval;
-                    user.ID = IDval;
 
                     userlist.Add(user);
                 }
 
-                return userlist;
+                return userlist; 
             }
             catch(Exception)
             {
